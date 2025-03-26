@@ -1,0 +1,30 @@
+.App {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+  width: 100%;
+  height: 100vh;
+  max-width: 1200px;
+  position: relative;
+  overflow-x: hidden;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.App-container {
+  background: linear-gradient(135deg, #ffd1dc, #fef6e4, #c8e7d8, #d5cfe1, #f8e1f4);
+  background-size: 400% 400%;
+  animation: pastelGradient 15s ease infinite;
+  height: 100vh;
+  min-width: 400px;
+  width: 100vw; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+
+}

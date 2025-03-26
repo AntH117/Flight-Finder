@@ -1,0 +1,260 @@
+.find-flights-body {
+    width: 90%;
+    min-height: 80vh;
+    height: fit-content;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.search-params-body {
+    width: 100%;
+    height: fit-content;
+}
+
+.search-params-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+@media (min-width: 600px) {
+    .search-params-form {
+      flex-direction: row;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .search-params-form {
+      grid-template-columns: repeat(5, 1fr); 
+    }
+  }
+
+
+.destination-picker-body {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgba(236, 236, 236, 0.541);
+    position: relative;
+}
+
+.destination-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 8;
+}
+
+.destination-error {
+  width: 200px;
+  height: 20px;
+  position: absolute;
+  right: 10%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(252, 64, 64);
+}
+
+.destination-picker-text {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    margin-left: 20px;
+}
+.destination-picker-input {
+    width: 100%;
+    min-height: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    position: relative;
+}
+
+.airport-picker-body {
+  width: 85%;
+  min-width: 300px;
+  height: fit-content;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 9;
+  top: 100%;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: rgb(239, 241, 243);
+}
+
+.airport-picker {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid black;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.airport-picker p {
+  width: 90%;
+}
+
+.not-found {
+  height: 50px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.destination-input {
+  width: 80%;
+  height: 90%;
+  border: 0px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+
+.destination-input::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
+input.destination-input:focus {
+  outline: none;
+}
+
+input.destination-input::placeholder {
+  color: black;
+}
+
+.individiual-airport {
+  width: 90%;
+  height: 50px;
+  background-color: rgb(235, 169, 84);
+}
+
+.destination-pin {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.destination-pin i {
+  font-size: 25px;
+}
+
+
+
+
+
+.date-picker-body {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid rgb(226, 226, 226);
+  background-color: rgba(236, 236, 236, 0.541);
+  position: relative;
+}
+
+.date-picker-error {
+  position: absolute;
+  width: 300px;
+  font-size: 15px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(252, 64, 64);
+  top: -30%;
+}
+
+
+.date-picker {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.date-picker input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0px;
+  color: transparent;
+  opacity: 0;
+}
+
+
+.date-picker-title {
+  position: absolute;
+  top: 10%;
+}
+
+.date-display {
+  margin-top: 15%;
+  font-weight: 300;
+}
+
+.search-submit-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.397);
+}
+
+@media (min-width: 600px) {
+  .search-submit-button {
+    width: 200px;
+    height: 70px;
+    border-radius: 100%;
+    transition: none;
+  }  
+}
+
+
+.find-flights-result {
+  width: 100%;
+  height: fit-content;
+  max-height: 600px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
