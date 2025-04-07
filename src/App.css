@@ -1,27 +1,28 @@
 .App {
  display: flex;
  flex-direction: column;
- justify-content: center;
  align-items: center;
-  width: 100%;
-  height: 100vh;
+  width: 90%;
+  height: 90vh;
   max-width: 1200px;
   position: relative;
   overflow-x: hidden;
-  background-color: white;
-  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.33);
+  border-radius: 20px;;
 }
 
 .App-container {
-  background: linear-gradient(135deg, #ffd1dc, #fef6e4, #c8e7d8, #d5cfe1, #f8e1f4);
-  background-size: 400% 400%;
-  animation: pastelGradient 15s ease infinite;
+  background: linear-gradient(to bottom right, #b7cef3, #e8c0ff, #ffffff);
   height: 100vh;
   min-width: 400px;
   width: 100vw; 
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden
 }
 
 body {

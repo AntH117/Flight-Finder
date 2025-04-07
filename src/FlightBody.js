@@ -5,22 +5,21 @@ export function IndividualFlight({data, smallDisplay, airportCode}) {
     const extractTime = (scheduled) => {
         if (!scheduled) return 'Unknown';
         const date = new Date(scheduled);
-        
-        // Extracting time in UTC (hours and minutes)
-        const hours = date.getUTCHours().toString().padStart(2, '0');  // Always 2 digits
-        const minutes = date.getUTCMinutes().toString().padStart(2, '0');  // Always 2 digits
-        
+        // Extracting time in local time (hours and minutes)
+        const hours = date.getHours().toString().padStart(2, '0');  // Always 2 digits
+        const minutes = date.getMinutes().toString().padStart(2, '0');  // Always 2 digits
+      
         return `${hours}:${minutes}`;
       };
     
     const [expand, setExpand] = React.useState(false)
-    return <div className='individual-flight-body' style={expand ? {height: '152px', borderBottom: '1px solid black'} : {height: '51px'}}>
+    return <div className='individual-flight-body' style={expand ? {height: '152px'} : {height: '51px'}}>
         <div className='individual-flight-header' onClick={() => setExpand((preval) => !preval)}>
             <div className='IF-num'>
                 <h3>{data.number ? data.number : 'N/A'}</h3>
             </div>
             <div className='IF-dep-ariv'>
-                <h3>{airportCode}</h3>
+                <h3>{airportCode.iata_code}</h3>
                 <h1>&#8640;</h1>
                 <h3>{data.arrival.airport.iata ? data.arrival.airport.iata : data.arrival.airport.name }</h3>
             </div>
@@ -39,8 +38,8 @@ export function IndividualFlight({data, smallDisplay, airportCode}) {
         {<div className='Individual-flight-details'>
             <div className='IF-flight-info'>
                 <div className='IF-info'>
-                    <h5>Dep Airport</h5>
-                    <p>{}</p>
+                    <h5>Departure Airport</h5>
+                    <p>{airportCode.name}</p>
                 </div>
                 <div className='IF-info'>
                     <h5>Arrival Airport</h5>
@@ -57,16 +56,16 @@ export function IndividualFlight({data, smallDisplay, airportCode}) {
             </div>
             <div className='IF-flight-info'>
                 <div className='IF-info'>
-                    <h5>Dep Terminal</h5>
-                    <p>{}</p>
+                    <h5>Departure terminal</h5>
+                    <p>{data.departure.terminal ? data.departure.terminal : 'N/A'}</p>
                 </div>
                 <div className='IF-info'>
-                    <h5>Arrival Terminal</h5>
-                    <p>{}</p>
+                    <h5>Arrival terminal</h5>
+                    <p>{data.arrival.terminal ? data.arrival.terminal : 'N/A'}</p>
                 </div>
                 <div className='IF-info'>
                     <h5>Est Arrival</h5>
-                    <p>{}</p>
+                    <p>{data.arrival.scheduledTime?.local ? extractTime(data.arrival.scheduledTime.local) : 'N/A'}</p>
                 </div>
                 <div className='IF-info'>
                     <h5>Flight Status</h5>
@@ -140,7 +139,7 @@ export function FlightBody() {
     
 
    return  <>
-   <h1>Most Recent 100 Flights</h1>
+   <h1 style={{fontWeight: '300', marginTop: '100px'}}>Most Recent 100 Flights</h1>
    <div className='flight-body' id='flightBody' ref={divRef}>
         {loading && <h1>Loading...</h1>}
         {!loading && <div className='flight-info'>
