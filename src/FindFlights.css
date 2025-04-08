@@ -48,6 +48,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.34);
     position: relative;
+    cursor: pointer;
 }
 
 .destination-overlay {
@@ -224,18 +225,21 @@ input.destination-input::placeholder {
   border: 0px;
   color: transparent;
   opacity: 0;
+  cursor: pointer;
 }
 
 
 .date-picker-title {
   position: absolute;
   top: 10%;
+  pointer-events: none;
 }
 
 .date-display {
   position: absolute;
   bottom: 20%;
   font-size: 14px;
+  pointer-events: none;
 }
 
 .search-submit-button {
@@ -252,6 +256,7 @@ input.destination-input::placeholder {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.34);
   font-family: "Montserrat", sans-serif;
+  cursor: pointer;
 }
 
 @media (min-width: 600px) {

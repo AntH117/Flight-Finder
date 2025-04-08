@@ -81,17 +81,32 @@ export function FlightBody() {
     const [loading, setLoading] = React.useState(true)
     const divRef = React.useRef();
     const [smallDisplay, setSmallDisplay] = React.useState(false)
-    const [airportCode, setAirportCode] = React.useState('SYD')
+    const [airportCode, setAirportCode] = React.useState('')
+
+      const fetchAirports = async () => {
+        const endpoint = '/data/australian_airports.json'
+        try {
+            const response = await fetch(endpoint)
+            const data = await response.json();
+            setAirportCode(data.Sheet1.find((airport) => airport.iata_code === 'SYD'))
+        } catch (error) {
+            console.log('Error fetching data', error)
+        } 
+    }
+    
+      React.useEffect(() => {
+            fetchAirports()
+      },[])
 
     const fetchFlights = async () => {
         const date = '2025-03-25';
-        
-        const url = `https://aerodatabox.p.rapidapi.com/flights/airports/iata/${airportCode}/${date}T00:00/${date}T11:59?withLeg=true&direction=Both&withCancelled=true&withCodeshared=true&withCargo=true&withPrivate=true&withLocation=false`;
+        const tempAirportCode = 'SYD'
+        const url = `https://aerodatabox.p.rapidapi.com/flights/airports/iata/${tempAirportCode}/${date}T00:00/${date}T11:59?withLeg=true&direction=Both&withCancelled=true&withCodeshared=true&withCargo=true&withPrivate=true&withLocation=false`;
         
         const options = {
           method: 'GET',
           headers: {
-            'x-rapidapi-key': 'c793a37dd5msh739576c5b2c6eadp161d43jsn64f22ed08077',
+            'x-rapidapi-key': '55058e19cdmsh037716a732c6fd0p13bae8jsn62cd3af04374',
             'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
           }
         };
@@ -99,7 +114,7 @@ export function FlightBody() {
         try {
           const response = await fetch(url, options);
           const result = await response.json();
-          const first100Departures = result.departures.slice(0, 100);
+          const first100Departures = result?.departures.slice(0, 100);
           setFlightData(first100Departures)
         } catch (error) {
           console.error(error);
@@ -139,11 +154,12 @@ export function FlightBody() {
     
 
    return  <>
-   <h1 style={{fontWeight: '300', marginTop: '100px'}}>Most Recent 100 Flights</h1>
+   <h1 style={{fontWeight: '300', marginTop: '100px', fontSize: '25px'}}>Most Recent 100 Flights</h1>
    <div className='flight-body' id='flightBody' ref={divRef}>
         {loading && <h1>Loading...</h1>}
+        {(!loading && !flightData) && <h1>Data Error</h1>}
         {!loading && <div className='flight-info'>
-            {flightData.map((data) => {
+            {flightData?.map((data) => {
                 return <IndividualFlight data={data} smallDisplay={smallDisplay} airportCode={airportCode}/>
             })}
         </div>}

@@ -16,7 +16,7 @@ export default function FindFlights() {
   const [airportCode, setAirportCode] = React.useState('')
 
   // const endpoint = `https://api.aviationstack.com/v1/flights?access_key=${API_KEY}`;
-  const api = 'f3d9278695439fb25dd9852219f8862e'
+  const api = '55058e19cdmsh037716a732c6fd0p13bae8jsn62cd3af04374'
 
   const fetchFlights = async () => {
       const endpoint = '/data/flights_data.json'
@@ -310,7 +310,7 @@ const url = `https://aerodatabox.p.rapidapi.com/flights/airports/iata/${departur
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "c793a37dd5msh739576c5b2c6eadp161d43jsn64f22ed08077",
+    "x-rapidapi-key": "55058e19cdmsh037716a732c6fd0p13bae8jsn62cd3af04374",
     "x-rapidapi-host": "aerodatabox.p.rapidapi.com",
   },
 };
