@@ -1,5 +1,6 @@
 import React from 'react';
 import './FlightBody.css';
+import {Route, Link} from 'react-router-dom'
 
 export function IndividualFlight({data, smallDisplay, airportCode}) {
     const extractTime = (scheduled) => {
@@ -72,6 +73,11 @@ export function IndividualFlight({data, smallDisplay, airportCode}) {
                     <p>{data.status}</p>
                 </div>
             </div>
+            <div className='IF-more-info'>
+                    <Link to={`/flights/${data.number.replace(/\s/g, '')}_${data.departure.scheduledTime?.local.replace(/\s/g, '_')}`} style={{color: 'rgb(159, 166, 255)'}}>
+                        More Information
+                    </Link>
+            </div>
         </div>}
     </div>
 }
@@ -115,6 +121,7 @@ export function FlightBody() {
           const response = await fetch(url, options);
           const result = await response.json();
           const first100Departures = result?.departures.slice(0, 100);
+          console.log('fetched data')
           setFlightData(first100Departures)
         } catch (error) {
           console.error(error);

@@ -111,6 +111,17 @@
     height: 100%;
     display: flex;
     flex-direction: row;
+    position: relative;
+    justify-content: center;
+}
+.IF-more-info {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    font-weight: 600;
+    color: rgb(244, 245, 253);
+    cursor: pointer;
 }
 
 .IF-flight-info {
