@@ -6,7 +6,7 @@ import TimePicker from "react-time-picker";
 
 
 export default function FindFlights() {
-
+  require('dotenv').config()
   const [flightData, setFlightData] = React.useState(null)
   const [loading, setLoading] = React.useState(true)
   const [detailedAirportData, setDetailedAirportData] = React.useState([])
@@ -16,7 +16,7 @@ export default function FindFlights() {
   const [airportCode, setAirportCode] = React.useState('')
 
   // const endpoint = `https://api.aviationstack.com/v1/flights?access_key=${API_KEY}`;
-  const api = '55058e19cdmsh037716a732c6fd0p13bae8jsn62cd3af04374'
+  const api = process.env.API_KEY
 
   const fetchFlights = async () => {
       const endpoint = '/data/flights_data.json'
